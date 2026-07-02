@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nzele Art — Luxury Waitlist Landing Site
 
-## Getting Started
+This is the premium waitlist and marketing landing site for **Nzele**, a luxury art ecommerce brand launching soon.
 
-First, run the development server:
+The design features a quiet luxury aesthetic: whitespace-dominant layouts, refined Google Fonts (`Cormorant Garamond` serif and `Inter` sans-serif), custom slow animations (400–600ms hover transitions), and professional portrait aspect-ratio imagery.
 
+---
+
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js (App Router) + TypeScript
+- **Styling:** Tailwind CSS v4 (configured via `@theme` variables in `app/globals.css`)
+- **API Services:** Built-in API Route Handlers
+- **Waitlist Service:** Resend (Audience Contacts API) with a zero-config local mock fallback
+- **Hosting:** Fully compatible for one-click deployment to **Vercel**
+
+---
+
+## 🚀 Getting Started
+
+### 1. Install Dependencies
+Run the following command at the root of the project:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+Copy the template environment file:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open `.env.local` and customize the values:
+- `NEXT_PUBLIC_MOCK_WAITLIST="true"`: Keeps the application in offline-testing mode. All waitlist registrations are appended locally to a file named `waitlist-signups.log` inside the project root (no internet or API keys required!).
+- `RESEND_API_KEY`: Set this to your Resend API Key (`re_...`) when you are ready to test live delivery.
+- `RESEND_AUDIENCE_ID`: Set this to your Resend Audience ID to add subscribers directly to a contact group. If omitted but `RESEND_API_KEY` is present, Nzele will default to sending email notifications using Resend.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Run Locally
+Start the local development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Branding & Placeholders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All branding elements and high-definition mock art files are in the `/public` folder:
+- **Logo:** `/public/Nzele_logo.png`
+  - *Note: Our header uses `mix-blend-multiply` so you can swap this with any high-contrast transparent PNG logo, and it will blend beautifully over header transitions.*
+- **Hero Image:** `/public/hero-bg.jpg` (Neutral abstract textured painting backdrop)
+- **About Canvas:** `/public/about-art.jpg` (Asymmetric layout display art)
+- **Teaser Artworks:** `/public/artwork1.jpg` through `/public/artwork4.jpg` (Used in the acquisition teaser grid)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To customize the branding, simply swap these files out with your actual photography while maintaining the naming conventions.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Deployment to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is structured to deploy to Vercel with zero extra server configuration:
+
+1. **Push your code** to a GitHub, GitLab, or Bitbucket repository.
+2. Go to [Vercel Dashboard](https://vercel.com/new).
+3. **Import** the repository.
+4. Under **Environment Variables**, add:
+   - `RESEND_API_KEY` = `your_resend_api_key`
+   - `RESEND_AUDIENCE_ID` = `your_resend_audience_id`
+5. Click **Deploy**. Vercel will automatically compile the TypeScript, bundle Tailwind CSS, and spin up the Serverless Route Handler for your waitlist.
