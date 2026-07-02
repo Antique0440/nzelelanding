@@ -34,18 +34,18 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-luxury-ivory/90 backdrop-blur-md border-b border-luxury-obsidian/10 py-3 shadow-sm"
-          : "bg-transparent border-b border-transparent py-4"
+          ? "bg-luxury-ivory/90 backdrop-blur-md border-b border-luxury-obsidian/10 py-2 shadow-sm"
+          : "bg-transparent border-b border-transparent py-2"
       }`}
     >
-      <div className="max-w-full mx-auto px-6 md:px-16 flex items-center justify-between">
+      <div className="max-w-full mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="relative block h-10 w-40 transition-opacity duration-300 hover:opacity-80">
+        <a href="#" className="relative block h-8 w-32 transition-opacity duration-300 hover:opacity-80">
           <Image
             src="/Nzele_logo_cropped.png"
             alt="Nzele Logo"
             fill
-            sizes="160px"
+            sizes="128px"
             className="object-contain"
             priority
           />
